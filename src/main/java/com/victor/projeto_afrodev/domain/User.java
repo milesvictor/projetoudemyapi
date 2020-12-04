@@ -2,13 +2,17 @@ package com.victor.projeto_afrodev.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 //Classe usuário
+@Document(collection="user") //informa que se trata de uma coleção do Mongo
 public class User implements Serializable {
 
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; // necessário para o Serializable
 	
-	
+	@Id
 	private String id;
 	private String name;
 	private String email;
