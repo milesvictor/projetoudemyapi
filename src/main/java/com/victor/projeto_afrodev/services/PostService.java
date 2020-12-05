@@ -31,6 +31,6 @@ public class PostService { //O serviço conversa com o repositório
 	
 	public List<Post> findByTitle(String text) {
 		
-		return repo.findByTitleContainingIgnoreCase(text);
+		return repo.searchTitle(text);
 	}
 }
