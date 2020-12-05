@@ -5,6 +5,7 @@
 package com.victor.projeto_afrodev.resources;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,32 @@ public class PostResource {
 	
 	
 	@RequestMapping(value="/titlesearch", method=RequestMethod.GET) 
-	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value="text", defaultValue="") String text) { //Retorna um post pelo id.
+	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value="text", defaultValue="") String text) { //Um post pelo titulo.
 		
 		text = URL.decodeParam(text);
 		
 		List<Post> list = service.findByTitle(text);
+		
+		return ResponseEntity.ok().body(list); 
+	}
+	
+	
+	@RequestMapping(value="/fullsearch", method=RequestMethod.GET) 
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam(value="text", defaultValue="") String text, 
+			@RequestParam(value="minDate", defaultValue="") String minDate, 
+			@RequestParam(value="maxDate", defaultValue="") String maxDate) { //Um post pelo nome/post/comentário e data.
+		
+		
+		text = URL.decodeParam(text);
+		
+		
+		Date min = URL.convertDate(minDate,  new Date(0L));
+		Date max = URL.convertDate(maxDate,  new Date());
+		
+		
+		List<Post> list = service.fullSearch(text, min, max);
+		
 		
 		return ResponseEntity.ok().body(list); 
 	}

@@ -4,6 +4,7 @@
 
 package com.victor.projeto_afrodev.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,5 +33,14 @@ public class PostService { //O serviço conversa com o repositório
 	public List<Post> findByTitle(String text) {
 		
 		return repo.searchTitle(text);
+	}
+	
+	
+	public List<Post> fullSearch(String text, Date minDate, Date maxDate) {
+		
+		maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000); //Arredonda pra 24h do dia do post 
+		
+		return repo.fullSearch(text, minDate, maxDate);
+		
 	}
 }
