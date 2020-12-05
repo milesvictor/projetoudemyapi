@@ -49,6 +49,25 @@ public class UserService { //O serviço conversa com o repositório
 	}
 	
 	
+	public User update(User obj) {
+		
+		User newObj = findById(obj.getId());
+		
+		updateData(newObj, obj);
+		
+		return repo.save(newObj);
+		 
+	}
+	
+	
+	private void updateData(User newObj, User obj) {
+			
+		newObj.setName(obj.getName());
+		
+		newObj.setEmail(obj.getEmail());
+	}
+
+
 	public User fromDTO(UserDTO objDto) { //Método que pega o DTO e transforma em usuário.
 		
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
