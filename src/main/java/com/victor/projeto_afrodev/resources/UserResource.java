@@ -69,7 +69,7 @@ public class UserResource {
 	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE) 
-	public ResponseEntity<Void> delete(@PathVariable String id) { //Retorna o usuário pelo id.
+	public ResponseEntity<Void> delete(@PathVariable String id) { //Deleta o usuário pelo id.
 		
 		service.delete(id);
 				
@@ -99,4 +99,6 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj.getPosts()); 
 
 	}
+	
+	
 }
