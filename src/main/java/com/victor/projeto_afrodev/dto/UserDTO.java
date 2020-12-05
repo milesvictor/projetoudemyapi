@@ -1,3 +1,9 @@
+/*
+		Classe usuários DTO é um obj que tem o papel de carregar dados das entidades de forma simples, podendo inclusive 
+		"projetar" apenas alguns dados da entidade original.
+*/
+
+
 package com.victor.projeto_afrodev.dto;
 
 

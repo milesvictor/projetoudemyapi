@@ -1,3 +1,7 @@
+/*
+	Classe de instanciação
+*/
+
 package com.victor.projeto_afrodev.config;
 
 import java.util.Arrays;
