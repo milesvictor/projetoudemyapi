@@ -41,6 +41,14 @@ public class UserService { //O serviço conversa com o repositório
 	}
 	
 	
+	public void delete(String id) {
+		
+		findById(id);
+		
+		repo.deleteById(id);
+	}
+	
+	
 	public User fromDTO(UserDTO objDto) { //Método que pega o DTO e transforma em usuário.
 		
 		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
