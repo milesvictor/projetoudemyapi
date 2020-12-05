@@ -4,6 +4,7 @@
 
 package com.victor.projeto_afrodev.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,10 @@ public class PostService { //O serviço conversa com o repositório
 		
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
-
+	
+	
+	public List<Post> findByTitle(String text) {
+		
+		return repo.findByTitleContainingIgnoreCase(text);
+	}
 }
